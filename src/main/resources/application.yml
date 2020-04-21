@@ -1,0 +1,24 @@
+info:
+  app:
+    name: api-pet-adoption
+    description: API for registering PETS information for adoption in JAVA.
+    version: v0.0.1
+
+server:
+  port: 4200
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:pet
+    username: ADMIN
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
