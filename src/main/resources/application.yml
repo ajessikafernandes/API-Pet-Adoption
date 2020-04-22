@@ -15,8 +15,8 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:pet
-    username: ADMIN
-    password:
+    username: ADMINAPIPET
+    password: PASSW0RD
   jpa:
     show-sql: true
     hibernate:
