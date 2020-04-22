@@ -1,11 +1,16 @@
 package com.adopt.pet.entity;
 
-import com.adopt.pet.enums.*;
+import com.adopt.pet.enums.Status;
+import com.adopt.pet.enums.Gender;
+import com.adopt.pet.enums.SelectOption;
+import com.adopt.pet.enums.Species;
+import com.adopt.pet.enums.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,11 +36,10 @@ public class Pet {
     private String petHistory;
     private String petDiet;
 
-//    @OneToOne(mappedBy = "pet", cascade = CascadeType.ALL)
-//    private Address address;
-//
-//    //Pendente o envio por postman,
-//    @ManyToMany(mappedBy = "petWithUser", cascade = CascadeType.ALL)
-//    private List<User> petWithUser;
+    @OneToOne(mappedBy = "pet", cascade = CascadeType.ALL)
+    private Address address;
+
+    @ManyToMany(mappedBy = "petWithUser", cascade = CascadeType.ALL)
+    private List<User> petWithUser;
 
 }
