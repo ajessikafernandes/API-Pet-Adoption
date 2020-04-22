@@ -4,6 +4,6 @@ public enum Status {
 
     AVAILABLE,
     IN_PROCESS,
-    ADOPTED;
+    ADOPTED
 
 }
