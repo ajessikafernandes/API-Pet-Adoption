@@ -1,8 +1,8 @@
 package com.adopt.pet.exceptions;
 
-public class AddressByIdNotFoundException extends RuntimeException {
+public class PetByIdNotFoundException extends RuntimeException {
 
-    public AddressByIdNotFoundException(String message){
+    public PetByIdNotFoundException(String message){
         super(message);
     }
 
