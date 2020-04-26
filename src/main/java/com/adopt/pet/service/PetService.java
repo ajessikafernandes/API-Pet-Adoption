@@ -1,7 +1,8 @@
 package com.adopt.pet.service;
 
 import com.adopt.pet.entity.Address;
-import com.adopt.pet.exceptions.AddressByIdNotFoundException;
+import com.adopt.pet.entity.Pet;
+import com.adopt.pet.exceptions.PetByIdNotFoundException;
 import com.adopt.pet.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,32 +15,32 @@ public class PetService {
     @Autowired
     PetRepository repository;
 
-    public boolean createNewAddress(Address address){
-        repository.save(address);
+    public boolean createNewPet(Pet pet){
+        repository.save(pet);
         return true;
     }
 
-    public Optional<Address> findAddressById(Long id){
-        Optional<Address> addressIn = repository.findById(id);
-        validateAddressIsPresent(addressIn);
-        return addressIn;
+    public Optional<Pet> findPetById(Long id){
+        Optional<Pet> petIn = repository.findById(id);
+        validatePetIsPresent(petIn);
+        return petIn;
     }
 
-    public Address updateAddressData(Address address, Long id){
-        Optional<Address> addressIn = repository.findById(id);
-        validateAddressIsPresent(addressIn);
-        repository.save(address);
-        return address;
+    public Pet updatePetData(Pet pet, Long id){
+        Optional<Pet> petIn = repository.findById(id);
+        validatePetIsPresent(petIn);
+        repository.save(pet);
+        return pet;
     }
 
-    public boolean deleteAddress(Long id){
+    public boolean deletePet(Long id){
         repository.deleteById(id);
         return true;
     }
 
-    private void validateAddressIsPresent(Optional<Address> address) {
-        if (!address.isPresent()){
-            throw new AddressByIdNotFoundException("Address id not found.");
+    private void validatePetIsPresent(Optional<Pet> pet) {
+        if (!pet.isPresent()){
+            throw new PetByIdNotFoundException("Pet id not found.");
         }
     }
 
