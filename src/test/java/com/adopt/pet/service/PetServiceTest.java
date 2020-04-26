@@ -3,17 +3,17 @@ package com.adopt.pet.service;
 import com.adopt.pet.entity.Pet;
 import com.adopt.pet.enums.*;
 import com.adopt.pet.repository.PetRepository;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
-
 @RunWith(SpringRunner.class)
-class PetServiceTest {
+public class PetServiceTest {
 
     @InjectMocks
     private PetService service;
@@ -24,7 +24,6 @@ class PetServiceTest {
     @Before
     public void setUp(){
         Pet pet = getPet();
-//        Mockito.when(repository.findById(pet.getId())).thenReturn(Optional.of(pet));
     }
 
     private Pet getPet(){
@@ -46,4 +45,15 @@ class PetServiceTest {
         pet.setPetDiet("Premier Naturals");
         return pet;
     }
+
+    @Test
+    public void createNewPet(){
+        Pet petIn = getPet();
+        Mockito.when(repository.save(getPet())).thenReturn(petIn);
+        service.createNewPet(petIn);
+        System.out.println(petIn);
+        Assert.assertEquals(petIn, getPet());
+    }
 }
+
+
