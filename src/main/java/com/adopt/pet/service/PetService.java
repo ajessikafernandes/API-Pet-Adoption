@@ -1,11 +1,11 @@
 package com.adopt.pet.service;
 
-import com.adopt.pet.entity.Address;
 import com.adopt.pet.entity.Pet;
 import com.adopt.pet.exceptions.PetByIdNotFoundException;
 import com.adopt.pet.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
@@ -39,7 +39,7 @@ public class PetService {
     }
 
     private void validatePetIsPresent(Optional<Pet> pet) {
-        if (!pet.isPresent()){
+        if (StringUtils.isEmpty(pet)) {
             throw new PetByIdNotFoundException("Pet id not found.");
         }
     }
