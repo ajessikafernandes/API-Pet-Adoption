@@ -1,7 +1,6 @@
 package com.adopt.pet.service;
 
 import com.adopt.pet.entity.Pet;
-import com.adopt.pet.entity.User;
 import com.adopt.pet.enums.*;
 import com.adopt.pet.repository.PetRepository;
 import org.junit.Assert;
@@ -11,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
@@ -18,7 +18,20 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 public class PetServiceTest {
 
-    //add for method setUp
+    public static final int ID = 1;
+    public static final String BREED_NAME = "Bulldog French";
+    public static final String NAME_PET = "Bilbo";
+    public static final Species TYPE_PET = Species.DOG;
+    public static final Gender GENDER = Gender.M;
+    public static final Size SIZE = Size.P;
+    public static final SelectOption OPTION_DO_NOT_KNOW = SelectOption.DO_NOT_KNOW;
+    public static final SelectOption OPTION_NO = SelectOption.NO;
+    public static final SelectOption OPTION_YES = SelectOption.YES;
+    public static final Status STATUS = Status.AVAILABLE;
+    public static final String PET_HISTORY = "Little dog found abandoned on the street.";
+    public static final String PET_DIET = "Premier Naturals";
+    public static final Status STATUS_IN_PROCESS = Status.IN_PROCESS;
+
     public final Pet pet = getPet();
 
     @InjectMocks
@@ -29,26 +42,26 @@ public class PetServiceTest {
 
     @Before
     public void setUp(){
-
+        MockitoAnnotations.initMocks(this);
     }
 
     private Pet getPet(){
         Pet pet = new Pet();
-        pet.setId(Long.valueOf(1));
-        pet.setBreedName("Bulldog French");
-        pet.setNamePet("Bilbo");
-        pet.setTypePet(Species.DOG);
-        pet.setGender(Gender.M);
-        pet.setSize(Size.P);
-        pet.setVaccinated(SelectOption.DO_NOT_KNOW);
-        pet.setMicrochip(SelectOption.NO);
-        pet.setCastrated(SelectOption.NO);
-        pet.setSociality(SelectOption.YES);
-        pet.setNeedsSpeciality(SelectOption.NO);
-        pet.setExperienceAdopt(SelectOption.NO);
-        pet.setStatus(Status.AVAILABLE);
-        pet.setPetHistory("Little dog found abandoned on the street.");
-        pet.setPetDiet("Premier Naturals");
+        pet.setId((long) ID);
+        pet.setBreedName(BREED_NAME);
+        pet.setNamePet(NAME_PET);
+        pet.setTypePet(TYPE_PET);
+        pet.setGender(GENDER);
+        pet.setSize(SIZE);
+        pet.setVaccinated(OPTION_DO_NOT_KNOW);
+        pet.setMicrochip(OPTION_NO);
+        pet.setCastrated(OPTION_NO);
+        pet.setSociality(OPTION_YES);
+        pet.setNeedsSpeciality(OPTION_NO);
+        pet.setExperienceAdopt(OPTION_NO);
+        pet.setStatus(STATUS);
+        pet.setPetHistory(PET_HISTORY);
+        pet.setPetDiet(PET_DIET);
         return pet;
     }
 
@@ -60,7 +73,7 @@ public class PetServiceTest {
 
     @Test
     public void findPetById(){
-        Mockito.when(repository.findById(pet.getId())).thenReturn(Optional.of(pet));
+        Mockito.when(repository.findById((long) ID)).thenReturn(Optional.of(pet));
         Optional<Pet> findByIdPet = service.findPetById(pet.getId());
         Assert.assertTrue(findByIdPet.isPresent());
     }
@@ -75,9 +88,9 @@ public class PetServiceTest {
     @Test
     public void alterDataPet(){
         petIsPresent();
-        pet.setStatus(Status.IN_PROCESS);
+        pet.setStatus(STATUS_IN_PROCESS);
         service.updatePetData(pet, pet.getId());
-        Assert.assertEquals(Status.IN_PROCESS, pet.getStatus());
+        Assert.assertEquals(STATUS_IN_PROCESS, pet.getStatus());
     }
 
     @Test
