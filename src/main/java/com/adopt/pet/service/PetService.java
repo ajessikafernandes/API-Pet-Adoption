@@ -8,6 +8,7 @@ import com.adopt.pet.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -57,10 +58,10 @@ public class PetService {
     }
 
     private Boolean validatePetNotNull(Pet pet) {
-        if (pet != null) {
-            return true;
+        if (Objects.isNull(pet)) {
+            throw new PetCannotBeNullException("Pet cannot be null");
         }
-        throw new PetCannotBeNullException("Pet cannot be null");
+        return true;
     }
 
 }
