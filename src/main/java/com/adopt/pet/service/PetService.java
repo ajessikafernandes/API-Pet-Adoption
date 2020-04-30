@@ -1,11 +1,12 @@
 package com.adopt.pet.service;
 
 import com.adopt.pet.entity.Pet;
+import com.adopt.pet.exceptions.IdCannotBeNullException;
 import com.adopt.pet.exceptions.PetByIdNotFoundException;
+import com.adopt.pet.exceptions.PetCannotBeNullException;
 import com.adopt.pet.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
@@ -15,33 +16,51 @@ public class PetService {
     @Autowired
     PetRepository repository;
 
-    public boolean createNewPet(Pet pet){
+    public boolean createNewPet(Pet pet) {
+        validatePetNotNull(pet);
         repository.save(pet);
         return true;
     }
 
-    public Optional<Pet> findPetById(Long id){
+    public Optional<Pet> findPetById(Long id) {
+        validatePetIdNotNull(id);
         Optional<Pet> petIn = repository.findById(id);
-        validatePetIsPresent(petIn);
+        if (!petIn.isPresent()) {
+            throw new PetByIdNotFoundException("Informed pet id not found");
+        }
         return petIn;
+
     }
 
-    public Pet updatePetData(Pet pet, Long id){
+    public Pet updatePetData(Pet pet, Long id) {
+        validatePetNotNull(pet);
+        validatePetIdNotNull(id);
         Optional<Pet> petIn = repository.findById(id);
-        validatePetIsPresent(petIn);
-        repository.save(pet);
-        return pet;
+        if (petIn.isPresent()) {
+            repository.save(pet);
+            return pet;
+        }
+        throw new PetByIdNotFoundException("Informed pet id not found");
     }
 
-    public boolean deletePet(Long id){
+    public boolean deletePet(Long id) {
+        validatePetIdNotNull(id);
         repository.deleteById(id);
         return true;
     }
 
-    private void validatePetIsPresent(Optional<Pet> pet) {
-        if (StringUtils.isEmpty(pet)) {
-            throw new PetByIdNotFoundException("Pet id not found.");
+    private Boolean validatePetIdNotNull(Long id) {
+        if (id != null) {
+            return true;
         }
+        throw new IdCannotBeNullException("Pet id not found.");
+    }
+
+    private Boolean validatePetNotNull(Pet pet) {
+        if (pet != null) {
+            return true;
+        }
+        throw new PetCannotBeNullException("Pet cannot be null");
     }
 
 }
