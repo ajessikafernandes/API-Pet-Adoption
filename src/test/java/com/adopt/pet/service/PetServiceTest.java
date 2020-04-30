@@ -2,6 +2,9 @@ package com.adopt.pet.service;
 
 import com.adopt.pet.entity.Pet;
 import com.adopt.pet.enums.*;
+import com.adopt.pet.exceptions.IdCannotBeNullException;
+import com.adopt.pet.exceptions.PetByIdNotFoundException;
+import com.adopt.pet.exceptions.PetCannotBeNullException;
 import com.adopt.pet.repository.PetRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -71,12 +74,6 @@ public class PetServiceTest {
         Assert.assertEquals("Bulldog French", pet.getBreedName());
     }
 
-    @Test
-    public void findPetById(){
-        Mockito.when(repository.findById((long) ID)).thenReturn(Optional.of(pet));
-        Optional<Pet> findByIdPet = service.findPetById(pet.getId());
-        Assert.assertTrue(findByIdPet.isPresent());
-    }
 
     @Test
     public void createNewPet(){
@@ -85,18 +82,57 @@ public class PetServiceTest {
         Assert.assertEquals(pet, getPet());
     }
 
+    @Test(expected = PetCannotBeNullException.class)
+    public void petNotNull(){
+        service.createNewPet(null);
+    }
+
     @Test
-    public void alterDataPet(){
+    public void findPetById(){
+        Mockito.when(repository.findById((long) ID)).thenReturn(Optional.of(pet));
+        Optional<Pet> findByIdPet = service.findPetById(pet.getId());
+        Assert.assertTrue(findByIdPet.isPresent());
+    }
+
+    @Test(expected = PetByIdNotFoundException.class)
+    public void idPetNotFound(){
+        service.findPetById((long) 255);
+    }
+
+    @Test(expected = IdCannotBeNullException.class)
+    public void findIdPetNull(){
+        service.findPetById(null);
+    }
+
+    @Test
+    public void updateDataPet(){
         petIsPresent();
         pet.setStatus(STATUS_IN_PROCESS);
         service.updatePetData(pet, pet.getId());
         Assert.assertEquals(STATUS_IN_PROCESS, pet.getStatus());
     }
 
+    @Test(expected = PetByIdNotFoundException.class)
+    public void updateErrorIdNotFound(){
+        petIsPresent();
+        pet.setStatus(STATUS_IN_PROCESS);
+        service.updatePetData(pet, (long) 255);
+    }
+
+    @Test(expected = IdCannotBeNullException.class)
+    public void updatePetIdNull(){
+        service.updatePetData(getPet(), null);
+    }
+
     @Test
     public void deletePet(){
         boolean deleteOperation = service.deletePet(pet.getId());
         Assert.assertTrue(deleteOperation);
+    }
+
+    @Test(expected = IdCannotBeNullException.class)
+    public void idPetNullDelete(){
+        service.deletePet(null);
     }
 }
 
