@@ -22,3 +22,12 @@ Para executar os testes unitários, use o comando:
 ```
 ./mvnw test
 ```
+
+### Acesso as collections usando o Postman:
+
+Faça o download do arquivo na pasta resources :
+```
+postman_collection.json
+```
+Import o arquivo no postman para acessar as collections.
+
