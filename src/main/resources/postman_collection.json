@@ -1,0 +1,115 @@
+{
+  "info": {
+    "_postman_id": "4f278357-189a-4995-ae1c-a36512801265",
+    "name": "com.adopt.pet",
+    "description": "API for registering PETS information for adoption and to encourage pet adoption.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST-new-pet-with-user",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"id\":1,\n   \"breedName\":\"Golden Retriever\",\n   \"namePet\":\"Jorel\",\n   \"typePet\":0,\n   \"gender\":1,\n   \"size\":2,\n   \"vaccinated\":0,\n   \"microchip\":0,\n   \"castrated\":0,\n   \"sociality\":0,\n   \"needsSpeciality\":1,\n   \"experienceAdopt\":1,\n   \"status\":1,\n   \"petHistory\":\"Encontrado abandonado na rua.\",\n   \"petDiet\":\"Premier naturals\",\n   \"address\":{\n      \"zip\":\"000000000\",\n      \"city\":\"Sampa\",\n      \"uf\":\"SP\"\n   },\n   \"petWithUser\":[\n      {\n         \"email\":\"usuario1@mail.com\",\n         \"password\":\"123456789\",\n         \"firstName\":\"Usuario\",\n         \"lastName\":\" 1\",\n         \"phone\":\"(11) 1234-1234\",\n         \"interview\":{\n            \"hasExperience\":0,\n            \"hasPets\":0,\n            \"howManyPets\":1,\n            \"hasCompany\":1,\n            \"hoursAlone\":8,\n            \"aboutPetsBehavior\":\"calmo e tranquilo\"\n         }\n      }\n   ]\n}"
+        },
+        "url": {
+          "raw": "localhost:4200/pet/new",
+          "host": [
+            "localhost"
+          ],
+          "port": "4200",
+          "path": [
+            "pet",
+            "new"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST-new-pet",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"breedName\":\"Sem Raça Definida\",\n   \"namePet\":\"Marmaduque\",\n   \"typePet\":0,\n   \"gender\":1,\n   \"size\":2,\n   \"vaccinated\":0,\n   \"microchip\":0,\n   \"castrated\":0,\n   \"sociality\":1,\n   \"needsSpeciality\":1,\n   \"experienceAdopt\":1,\n   \"status\":1,\n   \"petHistory\":\"Nascido em um abrigo para cães.\",\n   \"petDiet\":\"Premier naturals\",\n   \"address\":{\n      \"zip\":\"00000000\",\n      \"city\":\"Sampa\",\n      \"uf\":\"SP\"\n   }\n}"
+        },
+        "url": {
+          "raw": "localhost:4200/pet/new",
+          "host": [
+            "localhost"
+          ],
+          "port": "4200",
+          "path": [
+            "pet",
+            "new"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET-find-pet-by-id",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "localhost:4200/pet/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "4200",
+          "path": [
+            "pet",
+            "1"
+          ]
+        },
+        "description": "404 - Not Found (null)\n200 - Ok (id ok)"
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE-pet-by-id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "localhost:4200/pet/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "4200",
+          "path": [
+            "pet",
+            "1"
+          ]
+        },
+        "description": "204-No Content(ok)"
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
