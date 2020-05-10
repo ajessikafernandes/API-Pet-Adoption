@@ -1,10 +1,5 @@
 package com.adopt.pet.enums;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-@Getter
 public enum GenderEnum {
 
     FEMALE("Female"),
@@ -12,7 +7,7 @@ public enum GenderEnum {
 
     private String value;
 
-    GenderEnum(final String value) {
+    GenderEnum(String value) {
         this.value = value;
     }
 
