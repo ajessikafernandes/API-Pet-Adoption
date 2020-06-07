@@ -30,7 +30,7 @@ public class SelectOptionEnumTest {
     }
 
     @Test
-    public void testIgnoreCase2(){
+    public void testIgnoreDifferentCase(){
         assertEquals(SelectOptionEnum.byValue("Yes"), SelectOptionEnum.YES);
     }
 }
