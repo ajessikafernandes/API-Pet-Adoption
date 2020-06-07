@@ -24,16 +24,16 @@ public class PetServiceTest {
     public static final int ID = 1;
     public static final String BREED_NAME = "Bulldog French";
     public static final String NAME_PET = "Bilbo";
-    public static final Species TYPE_PET = Species.DOG;
-    public static final Gender GENDER = Gender.M;
-    public static final Size SIZE = Size.P;
-    public static final SelectOption OPTION_DO_NOT_KNOW = SelectOption.DO_NOT_KNOW;
-    public static final SelectOption OPTION_NO = SelectOption.NO;
-    public static final SelectOption OPTION_YES = SelectOption.YES;
-    public static final Status STATUS = Status.AVAILABLE;
+    public static final SpeciesEnum TYPE_PET = SpeciesEnum.DOG;
+    public static final GenderEnum GENDER = GenderEnum.MALE;
+    public static final SizeEnum SIZE_ENUM = SizeEnum.PEQUENO_PORTE;
+    public static final SelectOptionEnum OPTION_DO_NOT_KNOW = SelectOptionEnum.DO_NOT_KNOW;
+    public static final SelectOptionEnum OPTION_NO = SelectOptionEnum.NO;
+    public static final SelectOptionEnum OPTION_YES = SelectOptionEnum.YES;
+    public static final StatusEnum STATUS_ENUM = StatusEnum.AVAILABLE;
     public static final String PET_HISTORY = "Little dog found abandoned on the street.";
     public static final String PET_DIET = "Premier Naturals";
-    public static final Status STATUS_IN_PROCESS = Status.IN_PROCESS;
+    public static final StatusEnum STATUS_ENUM_IN_PROCESS = StatusEnum.IN_PROCESS;
 
     public final Pet pet = getPet();
 
@@ -55,14 +55,14 @@ public class PetServiceTest {
         pet.setNamePet(NAME_PET);
         pet.setTypePet(TYPE_PET);
         pet.setGender(GENDER);
-        pet.setSize(SIZE);
+        pet.setSize(SIZE_ENUM);
         pet.setVaccinated(OPTION_DO_NOT_KNOW);
         pet.setMicrochip(OPTION_NO);
         pet.setCastrated(OPTION_NO);
         pet.setSociality(OPTION_YES);
         pet.setNeedsSpeciality(OPTION_NO);
         pet.setExperienceAdopt(OPTION_NO);
-        pet.setStatus(STATUS);
+        pet.setStatus(STATUS_ENUM);
         pet.setPetHistory(PET_HISTORY);
         pet.setPetDiet(PET_DIET);
         return pet;
@@ -107,15 +107,15 @@ public class PetServiceTest {
     @Test
     public void updateDataPet(){
         petIsPresent();
-        pet.setStatus(STATUS_IN_PROCESS);
+        pet.setStatus(STATUS_ENUM_IN_PROCESS);
         service.updatePetData(pet, pet.getId());
-        Assert.assertEquals(STATUS_IN_PROCESS, pet.getStatus());
+        Assert.assertEquals(STATUS_ENUM_IN_PROCESS, pet.getStatus());
     }
 
     @Test(expected = PetByIdNotFoundException.class)
     public void updateErrorIdNotFound(){
         petIsPresent();
-        pet.setStatus(STATUS_IN_PROCESS);
+        pet.setStatus(STATUS_ENUM_IN_PROCESS);
         service.updatePetData(pet, (long) 255);
     }
 
