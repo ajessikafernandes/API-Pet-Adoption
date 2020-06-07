@@ -1,24 +1,25 @@
 package com.adopt.pet.enums;
 
+import java.util.Objects;
+
 public enum SelectOptionEnum {
 
-    YES("Yes"),
-    NO("No"),
-    DO_NOT_KNOW("Do not know");
+    YES,
+    NO,
+    DO_NOT_KNOW;
 
-    private String value;
-
-    SelectOptionEnum(final String value) {
-        this.value = value;
+    public static SelectOptionEnum byValue( String status ) {
+        for (SelectOptionEnum type : SelectOptionEnum.values()) {
+            if (type.name().equalsIgnoreCase(status)) {
+                return type;
+            }
+        }
+        return null;
     }
 
-    public String getValue() {
-        return value;
+    public static boolean optionIsNull(SelectOptionEnum selectOptionEnum){
+        return Objects.isNull(selectOptionEnum);
     }
 
-    @Override
-    public String toString() {
-        return this.getValue();
-    }
 
 }
