@@ -27,12 +27,12 @@ public class SelectInterviewEnumTest {
 
     @Test
     public void testIgnoreCase(){
-        assertEquals(SelectInterviewEnum.byValue("yes"), SelectOptionEnum.YES);
+        assertEquals(SelectInterviewEnum.byValue("yes"), SelectInterviewEnum.YES);
     }
 
     @Test
     public void testIgnoreDifferentCase(){
-        assertEquals(SelectInterviewEnum.byValue("Yes"), SelectOptionEnum.YES);
+        assertEquals(SelectInterviewEnum.byValue("Yes"), SelectInterviewEnum.YES);
     }
 
 }
