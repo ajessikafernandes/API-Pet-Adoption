@@ -1,22 +1,23 @@
 package com.adopt.pet.enums;
 
+import java.util.Objects;
+
 public enum SelectInterviewEnum {
 
-    YES("Yes"),
-    NO("No");
+    YES,
+    NO;
 
-    private String value;
-
-    SelectInterviewEnum(final String value) {
-        this.value = value;
+    public static SelectOptionEnum byValue( String status ) {
+        for (SelectOptionEnum type : SelectOptionEnum.values()) {
+            if (type.name().equalsIgnoreCase(status)) {
+                return type;
+            }
+        }
+        return null;
     }
 
-    public String getValue() {
-        return value;
+    public static boolean optionIsNull(SelectOptionEnum selectOptionEnum){
+        return Objects.isNull(selectOptionEnum);
     }
 
-    @Override
-    public String toString() {
-        return this.getValue();
-    }
 }
