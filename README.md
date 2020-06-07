@@ -31,3 +31,6 @@ postman_collection.json
 ```
 Import o arquivo no postman para acessar as collections.
 
+### Acesso a cobertura de testes do Jacoco:
+
+Acesse target/site/jacoco/index.html e execute com um navegador.
