@@ -7,8 +7,8 @@ public enum SelectInterviewEnum {
     YES,
     NO;
 
-    public static SelectOptionEnum byValue( String status ) {
-        for (SelectOptionEnum type : SelectOptionEnum.values()) {
+    public static SelectInterviewEnum byValue( String status ) {
+        for (SelectInterviewEnum type : SelectInterviewEnum.values()) {
             if (type.name().equalsIgnoreCase(status)) {
                 return type;
             }
@@ -16,8 +16,8 @@ public enum SelectInterviewEnum {
         return null;
     }
 
-    public static boolean optionIsNull(SelectOptionEnum selectOptionEnum){
-        return Objects.isNull(selectOptionEnum);
+    public static boolean optionIsNull(SelectInterviewEnum selectInterviewEnum){
+        return Objects.isNull(selectInterviewEnum);
     }
 
 }
