@@ -7,9 +7,9 @@ public enum GenderEnum {
     FEMALE,
     MALE;
 
-    public static GenderEnum byValue( String status ) {
+    public static GenderEnum byValue( String value ) {
         for (GenderEnum type : GenderEnum.values()) {
-            if (type.name().equalsIgnoreCase(status)) {
+            if (type.name().equalsIgnoreCase(value)) {
                 return type;
             }
         }

@@ -7,9 +7,9 @@ public enum SelectInterviewEnum {
     YES,
     NO;
 
-    public static SelectInterviewEnum byValue( String status ) {
+    public static SelectInterviewEnum byValue( String value) {
         for (SelectInterviewEnum type : SelectInterviewEnum.values()) {
-            if (type.name().equalsIgnoreCase(status)) {
+            if (type.name().equalsIgnoreCase(value)) {
                 return type;
             }
         }

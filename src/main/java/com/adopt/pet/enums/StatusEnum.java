@@ -1,23 +1,23 @@
 package com.adopt.pet.enums;
 
+import java.util.Objects;
+
 public enum StatusEnum {
 
-    AVAILABLE("Disponivel"),
-    IN_PROCESS("Em processo"),
-    ADOPTED("Adotado");
+    AVAILABLE,
+    IN_PROCESS,
+    ADOPTED;
 
-    private String value;
-
-    StatusEnum(final String value) {
-        this.value = value;
+    public static StatusEnum byValue( String value ) {
+        for (StatusEnum type : StatusEnum.values()) {
+            if (type.name().equalsIgnoreCase(value)) {
+                return type;
+            }
+        }
+        return null;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return this.getValue();
+    public static boolean optionIsNull(StatusEnum value){
+        return Objects.isNull(value);
     }
 }

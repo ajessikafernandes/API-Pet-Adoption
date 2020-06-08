@@ -8,9 +8,9 @@ public enum SelectOptionEnum {
     NO,
     DO_NOT_KNOW;
 
-    public static SelectOptionEnum byValue( String status ) {
+    public static SelectOptionEnum byValue( String value ) {
         for (SelectOptionEnum type : SelectOptionEnum.values()) {
-            if (type.name().equalsIgnoreCase(status)) {
+            if (type.name().equalsIgnoreCase(value)) {
                 return type;
             }
         }
