@@ -2,26 +2,26 @@ package com.adopt.pet.enums;
 
 import lombok.Getter;
 
+import java.util.Objects;
+
 @Getter
 public enum SizeEnum {
 
-    PEQUENO_PORTE("Pequeno porte"),
-    MEDIO_PORTE("Médio porte"),
-    GRANDE_PORTE("Grande porte");
+    PEQUENO_PORTE,
+    MEDIO_PORTE,
+    GRANDE_PORTE;
 
-    private String value;
-
-    SizeEnum(final String value) {
-        this.value = value;
+    public static SizeEnum byValue( String value ) {
+        for (SizeEnum type : SizeEnum.values()) {
+            if (type.name().equalsIgnoreCase(value)) {
+                return type;
+            }
+        }
+        return null;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return this.getValue();
+    public static boolean optionIsNull(SizeEnum sizeEnum){
+        return Objects.isNull(sizeEnum);
     }
 
 }

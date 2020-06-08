@@ -1,6 +1,6 @@
 package com.adopt.pet.entity;
 
-import com.adopt.pet.enums.State;
+import com.adopt.pet.enums.StateEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class Address {
     @Column(length = 40, nullable = false)
     private String city;
     @Column(length = 2, nullable = false)
-    private State uf;
+    private StateEnum uf;
 
     @JsonIgnore
     @OneToOne

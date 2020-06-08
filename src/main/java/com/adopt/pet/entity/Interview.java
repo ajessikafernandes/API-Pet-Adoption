@@ -1,6 +1,6 @@
 package com.adopt.pet.entity;
 
-import com.adopt.pet.enums.SelectInterview;
+import com.adopt.pet.enums.SelectInterviewEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,10 +18,10 @@ public class Interview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private SelectInterview hasExperience;
-    private SelectInterview hasPets;
+    private SelectInterviewEnum hasExperience;
+    private SelectInterviewEnum hasPets;
     private Integer howManyPets;
-    private SelectInterview hasCompany;
+    private SelectInterviewEnum hasCompany;
     private Long hoursAlone = TimeUnit.HOURS.toHours(0);
     private String aboutPetsBehavior;
 

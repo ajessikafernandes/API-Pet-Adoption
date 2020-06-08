@@ -1,6 +1,5 @@
 package com.adopt.pet.entity;
 
-import com.adopt.pet.enums.SelectInterview;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Data
 @AllArgsConstructor

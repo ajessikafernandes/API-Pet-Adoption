@@ -1,10 +1,10 @@
 package com.adopt.pet.entity;
 
-import com.adopt.pet.enums.Status;
-import com.adopt.pet.enums.Gender;
-import com.adopt.pet.enums.SelectOption;
-import com.adopt.pet.enums.Species;
-import com.adopt.pet.enums.Size;
+import com.adopt.pet.enums.StatusEnum;
+import com.adopt.pet.enums.GenderEnum;
+import com.adopt.pet.enums.SelectOptionEnum;
+import com.adopt.pet.enums.SpeciesEnum;
+import com.adopt.pet.enums.SizeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,16 +23,16 @@ public class Pet {
     private Long id;
     private String breedName;
     private String namePet;
-    private Species typePet;
-    private Gender gender;
-    private Size size;
-    private SelectOption vaccinated;
-    private SelectOption microchip;
-    private SelectOption castrated;
-    private SelectOption sociality;
-    private SelectOption needsSpeciality;
-    private SelectOption experienceAdopt;
-    private Status status;
+    private SpeciesEnum typePet;
+    private GenderEnum gender;
+    private SizeEnum size;
+    private SelectOptionEnum vaccinated;
+    private SelectOptionEnum microchip;
+    private SelectOptionEnum castrated;
+    private SelectOptionEnum sociality;
+    private SelectOptionEnum needsSpeciality;
+    private SelectOptionEnum experienceAdopt;
+    private StatusEnum status;
     private String petHistory;
     private String petDiet;
 

@@ -30,7 +30,6 @@ public class PetService {
             throw new PetByIdNotFoundException("Informed pet id not found");
         }
         return petIn;
-
     }
 
     public Pet updatePetData(Pet pet, Long id) {
