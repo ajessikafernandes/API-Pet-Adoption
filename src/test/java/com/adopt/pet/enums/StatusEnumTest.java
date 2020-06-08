@@ -35,5 +35,4 @@ public class StatusEnumTest {
         assertEquals(StatusEnum.byValue("Available"), StatusEnum.AVAILABLE);
     }
 
-
 }
