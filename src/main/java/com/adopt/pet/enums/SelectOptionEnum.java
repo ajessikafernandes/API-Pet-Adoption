@@ -21,5 +21,4 @@ public enum SelectOptionEnum {
         return Objects.isNull(selectOptionEnum);
     }
 
-
 }
