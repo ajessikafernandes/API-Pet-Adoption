@@ -17,6 +17,10 @@ Executando pela linha de comando na pasta da raiz do projeto, crie o jar do proj
 ```
 ./mvnw clean install
 ```
+Para executar o projeto via terminal, use o comando :
+```
+java -jar -Dspring.profiles.active=local target/pet-0.0.1-SNAPSHOT.jar
+```
 
 Para executar os testes unitários, use o comando: 
 ```
